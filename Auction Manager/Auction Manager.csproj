@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\AuctionLibrary\AuctionLibrary\AuctionLibrary.csproj" />
+    <ProjectReference Include="..\AuctionLibrary\AuctionLibrary\AuctionLibrary.csproj" />
   </ItemGroup>
 
 </Project>
