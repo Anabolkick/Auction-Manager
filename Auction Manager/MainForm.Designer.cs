@@ -62,7 +62,7 @@ namespace Auction_Manager
             // 
             this.login_name.AutoSize = true;
             this.login_name.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.login_name.Location = new System.Drawing.Point(375, 9);
+            this.login_name.Location = new System.Drawing.Point(345, 9);
             this.login_name.Name = "login_name";
             this.login_name.Size = new System.Drawing.Size(98, 21);
             this.login_name.TabIndex = 0;

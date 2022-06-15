@@ -35,9 +35,9 @@ namespace Auction_Manager
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.register_btn = new System.Windows.Forms.Button();
-            this.login_error = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.email_tb = new System.Windows.Forms.TextBox();
+            this.login_error = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // login_tb
@@ -103,19 +103,6 @@ namespace Auction_Manager
             this.register_btn.UseVisualStyleBackColor = true;
             this.register_btn.Click += new System.EventHandler(this.register_btn_Click);
             // 
-            // login_error
-            // 
-            this.login_error.AutoSize = true;
-            this.login_error.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.login_error.ForeColor = System.Drawing.Color.Red;
-            this.login_error.Location = new System.Drawing.Point(61, 273);
-            this.login_error.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.login_error.Name = "login_error";
-            this.login_error.Size = new System.Drawing.Size(176, 21);
-            this.login_error.TabIndex = 6;
-            this.login_error.Text = "Can`t login to account!";
-            this.login_error.Visible = false;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -135,6 +122,19 @@ namespace Auction_Manager
             this.email_tb.Name = "email_tb";
             this.email_tb.Size = new System.Drawing.Size(251, 29);
             this.email_tb.TabIndex = 7;
+            // 
+            // login_error
+            // 
+            this.login_error.AutoSize = true;
+            this.login_error.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.login_error.ForeColor = System.Drawing.Color.Red;
+            this.login_error.Location = new System.Drawing.Point(13, 273);
+            this.login_error.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.login_error.Name = "login_error";
+            this.login_error.Size = new System.Drawing.Size(176, 21);
+            this.login_error.TabIndex = 6;
+            this.login_error.Text = "Can`t login to account!";
+            this.login_error.Visible = false;
             // 
             // LoginForm
             // 
@@ -167,9 +167,9 @@ namespace Auction_Manager
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button register_btn;
-        private System.Windows.Forms.Label login_error;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox email_tb;
+        private System.Windows.Forms.Label login_error;
     }
 }
 

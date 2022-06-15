@@ -44,7 +44,7 @@ namespace Auction_Manager
             else
             {
                 login_error.Visible = true;
-                login_error.Text = "login/email or password is empty!";
+                login_error.Text = "login/email or password less then 6 chapters!";
             }
         }
 

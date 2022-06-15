@@ -14,7 +14,7 @@ namespace Auction_Manager
         }
         public static User Register(string login, string email, string password)
         {
-            if (login.Length < 1 || email.Length < 1 || password.Length < 1)
+            if (login.Length < 6 || email.Length < 6 || password.Length < 6)
             {
                 return null;
             }

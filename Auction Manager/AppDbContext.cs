@@ -7,7 +7,7 @@ namespace Auction_Manager
     public class AppDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public  DbSet<SellRequest> SellRequests { get; set; }
+        public DbSet<SellRequest> SellRequests { get; set; }
         public DbSet<BuyRequest> BuyRequests { get; set; }
 
         public AppDbContext()

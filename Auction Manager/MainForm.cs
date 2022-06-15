@@ -11,6 +11,7 @@ namespace Auction_Manager
     public partial class MainForm : Form
     {
         public User Current_user;
+        private Timer timer1;
         public MainForm()
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace Auction_Manager
 
             login_name.Text = $"Login: {Current_user.Login}";
             RefreshSellView();
+            SetTimer();
         }
 
         private void LoadData()
@@ -118,6 +120,8 @@ namespace Auction_Manager
             {
                 if (sellRequest.Id == buyRequest.TargetSellRequest.Id)
                 {
+                    using AppDbContext db = new AppDbContext();
+                    buyRequest.Buyer = db.Users.FirstOrDefault(u => u.Id == buyRequest.BuyerId);
                     var item = new ListViewItem
                     {
                         Tag = buyRequest,
@@ -161,7 +165,6 @@ namespace Auction_Manager
             }
         }
 
-
         private void MakeDeals_btn_Click(object sender, System.EventArgs e)
         {
             MakeDeals();
@@ -187,10 +190,62 @@ namespace Auction_Manager
                     closedsell.Add(db.SellRequests.FirstOrDefault(r => r.Id == request.Id));
                 }
                 db.SellRequests.RemoveRange(closedsell);
+                foreach (var request in DealManager.SellRequests)
+                {
+                    db.SellRequests.Update(request);
+                }
                 db.SaveChanges();
             }
             DealManager.DeleteClosedRequests();
 
         }
+
+        private void MakeDeals(object sender, EventArgs e)
+        {
+            DealManager.MakeDeals();
+            using (AppDbContext db = new AppDbContext())
+            {
+                var closedbuy = new List<BuyRequest>();
+                foreach (var request in DealManager.ClosedBuyRequests)
+                {
+                    closedbuy.Add(db.BuyRequests.FirstOrDefault(r => r.Id == request.Id));
+                }
+                db.BuyRequests.RemoveRange(closedbuy);
+
+                var closedsell = new List<SellRequest>();
+                foreach (var request in DealManager.ClosedSellRequests)
+                {
+                    closedsell.Add(db.SellRequests.FirstOrDefault(r => r.Id == request.Id));
+                }
+                db.SellRequests.RemoveRange(closedsell);
+                foreach (var request in DealManager.SellRequests)
+                {
+                    db.SellRequests.Update(request);
+                }
+                db.SaveChanges();
+            }
+            DealManager.DeleteClosedRequests();
+
+            RefreshSellView();
+            foreach (ListViewItem listViewItem in sell_requests_list_view.Items)
+            {
+                listViewItem.Selected = true;
+            }
+
+            sell_requests_list_view.Items[0].Selected = true;
+
+
+        }
+
+        private void SetTimer()
+        {
+            Timer timer1 = new Timer();
+            var timeToAlarm = DateTime.Now.AddHours(0).AddMinutes(0).AddSeconds(30);
+            timer1.Interval = (int)(timeToAlarm - DateTime.Now).TotalMilliseconds;
+            timer1.Tick += MakeDeals;
+            timer1.Start();
+            
+        }
+
     }
 }
